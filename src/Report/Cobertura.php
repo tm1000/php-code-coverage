@@ -25,7 +25,7 @@ final class Cobertura
     /**
      * @throws WriteOperationFailedException
      */
-    public function process(CodeCoverage $coverage, ?string $target = null, ?string $name = null): string
+    public function process(CodeCoverage $coverage, ?string $target = null): string
     {
         $time = (string) time();
 
@@ -84,7 +84,7 @@ final class Cobertura
 
             $packageElement    = $document->createElement('package');
             $packageComplexity = 0;
-            $packageName       = $name ?? '';
+            $packageName       = str_replace($report->pathAsString() . DIRECTORY_SEPARATOR, '', $item->pathAsString());
 
             $packageElement->setAttribute('name', $packageName);
 
