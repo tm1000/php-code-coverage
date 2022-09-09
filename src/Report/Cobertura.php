@@ -84,7 +84,7 @@ final class Cobertura
 
             $packageElement    = $document->createElement('package');
             $packageComplexity = 0;
-            $packageName       = $name ?? '';
+            $packageName       = $name ?? str_replace($report->pathAsString() . DIRECTORY_SEPARATOR, '', $item->pathAsString());
 
             $packageElement->setAttribute('name', $packageName);
 
